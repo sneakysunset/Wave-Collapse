@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CellBase" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAABAAAAAGQAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\CellBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CellType1" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\CellType1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaveCollapseFunction&lt;T, J&gt;" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAQAAAAAAAAAAAAICAAAACAACCAAAAA=</HashCode>
+      <FileName>Assets\Scripts\WaveCollapseFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaveCollapsExecuter" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQABAAQAgACAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\WaveCollapsExecuter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ICellType" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAABAAAAAEAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\ICellType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ECellType" Collapsed="true">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAACBAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ECellType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
