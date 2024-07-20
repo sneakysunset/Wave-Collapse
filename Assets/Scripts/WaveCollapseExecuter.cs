@@ -5,7 +5,7 @@ using NaughtyAttributes;
 using System;
 public class WaveCollapseExecuter : MonoBehaviour
 {
-    WaveCollapseFunction<CellTypeLandscape, Color> _collapseFunction;
+    WaveCollapseFunction/*<Color, ECellLandscape>*/ _collapseFunction;
     [SerializeField] private int _rows, _columns;
     [SerializeField] private bool _IsCollapseStartRandom;
     [HideIf("_IsCollapseStartRandom"), SerializeField] private Vector2Int _collapseStartCoordinates;
@@ -21,7 +21,7 @@ public class WaveCollapseExecuter : MonoBehaviour
     [ContextMenu("Execute Wave Collapse Function")]
     public void ExecuteWaveCollapseFunction()
     {
-        _collapseFunction = new WaveCollapseFunction<CellTypeLandscape, Color>(_rows, _columns);
+        _collapseFunction = new WaveCollapseFunction/*<CellTypeLandscape, Color>*/(_rows, _columns);
         if(_EnumInstance != null)
         {
             StopCoroutine(_EnumInstance);

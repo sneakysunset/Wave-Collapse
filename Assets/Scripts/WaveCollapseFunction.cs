@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveCollapseFunction <T, J> where T : ConditionCellBase, IConditionalCellType , new() where J : new()
+public class WaveCollapseFunction/* <T, J> where T :  class, new() where J : new()*/
 {
-    public T[,] _conditionalGrid;
-    public J[,] _cellsContent;
+    public CellTypeNumber[,] _conditionalGrid;
+    //public J[,] _cellsContent;
 
     public WaveCollapseFunction(int rows, int columns)
     {
         _conditionalGrid = BuildConditionalGrid(rows, columns);
-        _cellsContent = BuildContentGrid(rows, columns);
+        //_cellsContent = BuildContentGrid(rows, columns);
     }
     
     ~WaveCollapseFunction()
@@ -21,26 +21,24 @@ public class WaveCollapseFunction <T, J> where T : ConditionCellBase, ICondition
         }
     }
 
-    public J[,] BuildContentGrid(int rows, int columns)
+/*    public J[,] BuildContentGrid(int rows, int columns)
     {
-        _cellsContent = new J[rows, columns];
+*//*        _cellsContent = new J[rows, columns];
         foreach(var cell in _cellsContent)
         {
             
         }
-        return _cellsContent;
-    }
+        return _cellsContent;*//*
+    }*/
 
-    public T[,] BuildConditionalGrid(int rows, int columns) 
+    public CellTypeNumber/*T*/[,] BuildConditionalGrid(int rows, int columns) 
     {
-        T[,] grid = new T[rows, columns];
+        CellTypeNumber[,] grid = new CellTypeNumber[rows, columns];
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
-                grid[i, j] = new T();
-                grid[i, j].row = i;
-                grid[i, j].column = j;
+                grid[i, j] = new CellTypeNumber();
             }
         }
 
@@ -54,10 +52,11 @@ public class WaveCollapseFunction <T, J> where T : ConditionCellBase, ICondition
             Debug.LogError("Input coordinates or outside of grid");
             return false;
         }
-        _conditionalGrid[firstCellCoord.x, firstCellCoord.y].SetCellEntropy(entropyIndex);
+        CellTypeNumber[,] cells = _conditionalGrid;
+        cells[firstCellCoord.x, firstCellCoord.y].SetCellEntropy(entropyIndex);
         PropagateCollapse(firstCellCoord);
 
-        foreach(var cell in _conditionalGrid)
+        foreach(var cell in cells)
         {
             cell.SetCellCollapsed(false);
         }
@@ -75,25 +74,25 @@ public class WaveCollapseFunction <T, J> where T : ConditionCellBase, ICondition
 
         if (IsCellInGrid(rightCoord))
         {
-            _conditionalGrid[rightCoord.x, rightCoord.y].UpdateEntropy(this);
+            _conditionalGrid[rightCoord.x, rightCoord.y].UpdateEntropy(_conditionalGrid);
             coordsToPropagateNext.Add(rightCoord);
         }
 
         if (IsCellInGrid(leftCoord))
         {
-            _conditionalGrid[leftCoord.x, leftCoord.y].UpdateEntropy(this);
+            _conditionalGrid[leftCoord.x, leftCoord.y].UpdateEntropy(_conditionalGrid);
             coordsToPropagateNext.Add(leftCoord);
         }
 
         if(IsCellInGrid(upCoord))
         {
-            _conditionalGrid[upCoord.x, upCoord.y].UpdateEntropy(this);
+            _conditionalGrid[upCoord.x, upCoord.y].UpdateEntropy(_conditionalGrid);
             coordsToPropagateNext.Add(upCoord);
         }
 
         if (IsCellInGrid(downCoord))
         {
-            _conditionalGrid[downCoord.x, downCoord.y].UpdateEntropy(this);
+            _conditionalGrid[downCoord.x, downCoord.y].UpdateEntropy(_conditionalGrid);
             coordsToPropagateNext.Add(downCoord);
         }
 

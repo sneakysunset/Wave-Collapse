@@ -4,7 +4,6 @@ using UnityEngine;
 
 public interface IConditionalCellType
 {
-    public void UpdateEntropy<T, J>(WaveCollapseFunction<T, J> waveCollapseFunction) where T : ConditionCellBase, IConditionalCellType, new() where J : new();
 
     public void GetCellContent();
 

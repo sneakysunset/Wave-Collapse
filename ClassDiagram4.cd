@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CellTypeLandscape">
+    <Position X="6.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAACAAIA=</HashCode>
+      <FileName>Assets\Scripts\CellTypeLandscape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConditionCellBase" Collapsed="true">
+    <Position X="6.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAABAAAAAGQAAAAABAAAAIAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\ConditionCellBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ContentCellBase" Collapsed="true">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\ContentCellBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ContentCellColor">
+    <Position X="4.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\ContentCellColor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LandscapeCellConversions">
+    <Position X="10.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAACAAIAAAAQAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ECellLandscape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaveCollapseExecuter">
+    <Position X="12.75" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAwAAQABAAQEgAGAAAggAAAAAEAAAAAAACAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\WaveCollapseExecuter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaveCollapseFunction&lt;T, J&gt;">
+    <Position X="8.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAICAAAAAAACCEAQAA=</HashCode>
+      <FileName>Assets\Scripts\WaveCollapseFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IConditionalCellType">
+    <Position X="15" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAABAAAAAEAAAAAABAAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\IConditionalCellType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IContentCellType">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\IContentCellType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ECellLandscape">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAACBAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ECellLandscape.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

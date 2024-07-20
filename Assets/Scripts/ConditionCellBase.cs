@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConditionCellBase : IConditionalCellType
+public abstract class ConditionCellBase<V> where V : new()
 {
+    public List<V> cellTypes;
     public ConditionCellBase() { }
+
+    public ConditionCellBase(int _row, int _column) 
+    {
+        row = _row; column = _column;
+    }
 
     public int row, column;
     public bool isCollapsed;
@@ -19,20 +25,22 @@ public class ConditionCellBase : IConditionalCellType
         SetCellCollapsed(true);
     }
 
-    public virtual void GetCellContent()
+    public List<V> GetCellContent()
     {
-        throw new System.NotImplementedException();
+        return cellTypes;
     }
 
-    public virtual void UpdateEntropy<T, J>(WaveCollapseFunction<T, J> waveCollapseFunction)
-        where T : ConditionCellBase, IConditionalCellType, new()
-        where J : new()
-    {
-        SetCellCollapsed(true);
-    }
 
     public void SetCellCollapsed(bool isCollapsed)
     {
         this.isCollapsed = isCollapsed;
     }
+
+    public virtual void UpdateEntropy<T>(T[,] conditionArray)
+       where T : ConditionCellBase<V>
+    {
+        SetCellCollapsed(true);
+    }
+
+
 }
