@@ -10,6 +10,7 @@ public abstract class ConditionCellBase<V> where V : new()
     public ConditionCellBase(int _row, int _column) 
     {
         row = _row; column = _column;
+        cellTypes = new List<V>();
     }
 
     public int row, column;
@@ -17,12 +18,13 @@ public abstract class ConditionCellBase<V> where V : new()
 
     public virtual bool IsCellCollapsed(int cellRow, int cellColumn)
     {
-        throw new System.NotImplementedException();
+        return isCollapsed;
     }
 
-    public virtual void SetCellEntropy(int entropyIndex)
+    public virtual bool SetCellEntropy(int entropyIndex)
     {
         SetCellCollapsed(true);
+        return true;
     }
 
     public List<V> GetCellContent()

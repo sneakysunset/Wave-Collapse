@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaveCollapseFunction/* <T, J> where T :  class, new() where J : new()*/
@@ -7,9 +8,9 @@ public class WaveCollapseFunction/* <T, J> where T :  class, new() where J : new
     public CellTypeNumber[,] _conditionalGrid;
     //public J[,] _cellsContent;
 
-    public WaveCollapseFunction(int rows, int columns)
+    public WaveCollapseFunction(int rows, int columns, TextMeshProUGUI text, Transform parent)
     {
-        _conditionalGrid = BuildConditionalGrid(rows, columns);
+        _conditionalGrid = BuildConditionalGrid(rows, columns, text, parent);
         //_cellsContent = BuildContentGrid(rows, columns);
     }
     
@@ -31,29 +32,47 @@ public class WaveCollapseFunction/* <T, J> where T :  class, new() where J : new
         return _cellsContent;*//*
     }*/
 
-    public CellTypeNumber/*T*/[,] BuildConditionalGrid(int rows, int columns) 
+    public void PrintCells()
+    {
+        for(int i = 0; i < _conditionalGrid.GetLength(0); i++)
+        {
+            for (int j = 0; j < _conditionalGrid.GetLength(1); j++)
+            {
+                string message = $"Cell [{i},{j}] content is : ";
+                foreach(var cell in _conditionalGrid[i, j].GetCellContent()) message += cell.ToString() + ",";
+                Debug.Log(message + "\n");
+            }
+        }
+    }
+    public CellTypeNumber/*T*/[,] BuildConditionalGrid(int rows, int columns, TextMeshProUGUI text, Transform parent) 
     {
         CellTypeNumber[,] grid = new CellTypeNumber[rows, columns];
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
-                grid[i, j] = new CellTypeNumber();
+                grid[i, j] = new CellTypeNumber(i, j, text, parent);
             }
         }
 
         return grid;
     }
 
-    public bool CollapseGrid(Vector2Int firstCellCoord, int entropyIndex)
+    public bool CollapseGrid(Vector2Int firstCellCoord, int entropyIndex, out bool isComplete)
     {
+        isComplete = true;
         if(!IsCellInGrid(firstCellCoord))
         {
-            Debug.LogError("Input coordinates or outside of grid");
+            Debug.LogError($" {firstCellCoord} Input coordinates or outside of grid");
+            Debug.LogError("Is Collapsed ? " + _conditionalGrid[firstCellCoord.x, firstCellCoord.y].isCollapsed);
             return false;
         }
         CellTypeNumber[,] cells = _conditionalGrid;
-        cells[firstCellCoord.x, firstCellCoord.y].SetCellEntropy(entropyIndex);
+        if(!cells[firstCellCoord.x, firstCellCoord.y].SetCellEntropy(entropyIndex))
+        {
+            isComplete = false;
+            return true;
+        }
         PropagateCollapse(firstCellCoord);
 
         foreach(var cell in cells)
@@ -98,7 +117,7 @@ public class WaveCollapseFunction/* <T, J> where T :  class, new() where J : new
 
         if(coordsToPropagateNext.Count == 0)
         {
-            Debug.Log("End Of Propagation");
+            //Debug.Log("End Of Propagation");
             return;
         }
 
@@ -115,7 +134,7 @@ public class WaveCollapseFunction/* <T, J> where T :  class, new() where J : new
         if(row < 0 || column < 0 
           || row >= _conditionalGrid.GetLength(0) 
           || column >= _conditionalGrid.GetLength(1) 
-          || !_conditionalGrid[row, column].IsCellCollapsed(row, column))
+          || _conditionalGrid[row, column].IsCellCollapsed(row, column))
             return false;
 
         return true;
